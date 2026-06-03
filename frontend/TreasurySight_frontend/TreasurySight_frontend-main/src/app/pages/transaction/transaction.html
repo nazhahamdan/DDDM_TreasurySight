@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="transactions-dashboard">
+
+  <!-- HEADER -->
+  <div class="header">
+
+    <!-- PAGE TITLE -->
+    <div class="actions">
+      <h2 class="page-title">Transactions</h2>
+    </div>
+
+    <!-- FILTERS & SEARCH -->
+    <div class="filters">
+      <input type="text" placeholder="Rechercher ici..." [(ngModel)]="search">
+    </div>
+  </div>
+
+  <!-- CARD -->
+  <div class="card">
+
+    <!-- TABLE -->
+    <div class="transactions-table">
+
+      <!-- TABLE HEADER -->
+      <div class="table-header">
+        <div><input type="checkbox"></div>
+        <div>DATE</div>
+        <div>LIBELLÉ</div>
+        <div>MONTANT</div>
+        <div>CATÉGORIE</div>
+      </div>
+
+      <!-- TABLE ROWS -->
+      <div class="table-row" *ngFor="let t of transactions">
+        <div><input type="checkbox"></div>
+        <div>{{t.dateTransaction}}</div>
+        <div>{{t.description}}</div>
+        <div [ngClass]="{'debit': t.typeOperation === 'DEBIT', 'credit': t.typeOperation === 'CREDIT'}">
+          {{t.montant}}
+        </div>
+        <div>
+          <select>
+            <option>{{t.sousCategorie}}</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ADD BUTTON -->
+    <button class="btn-add" mat-raised-button color="primary" (click)="openAddTransactionDialog()">
+      <i class="ri-add-line"></i> Ajouter Transaction
+    </button>
+
+  </div>
+
+</div>

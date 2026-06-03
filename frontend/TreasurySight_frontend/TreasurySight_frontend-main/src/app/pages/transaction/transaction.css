@@ -1,0 +1,119 @@
+.transactions-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.filters input {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #e5eaf0;
+  background: #ffffff;
+  font-size: 0.85rem;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid #e8ecf0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  overflow-x: auto;
+}
+
+/* TABLE */
+.transactions-table {
+  display: grid;
+  grid-template-rows: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 2fr 1fr 1.2fr;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #f1f3f7;
+}
+
+.table-header {
+  background: #f7f9fc;
+  font-weight: 600;
+  color: #8a9099;
+  border-bottom: 2px solid #e8ecf0;
+}
+
+.table-row:hover {
+  background: #f7f9fc;
+  cursor: pointer;
+}
+
+/* AMOUNT COLORS */
+.debit {
+  color: #F44336;
+  font-weight: 600;
+}
+
+.credit {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* SELECT */
+.table-row select {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #e5eaf0;
+  background: #ffffff;
+  font-size: 0.85rem;
+}
+
+/* ADD BUTTON */
+.btn-add {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #1a73e8;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-add:hover {
+  background: #1666c1;
+}

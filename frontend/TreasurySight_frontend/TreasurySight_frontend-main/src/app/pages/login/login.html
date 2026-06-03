@@ -1,0 +1,54 @@
+<div class="login-container">
+
+  <div class="login-card">
+
+    <h2>Bienvenue 👋</h2>
+    <p class="subtitle">Connectez-vous à votre espace TreasurySight</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Email</label>
+        <input 
+          formControlName="email" 
+          type="email" 
+          placeholder="ex: contact@entreprise.com">
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <input 
+          formControlName="password" 
+          type="password" 
+          placeholder="••••••••">
+      </div>
+
+      <!-- OPTIONS -->
+      <div class="form-options">
+        <label class="remember">
+          <input type="checkbox"> Se souvenir de moi
+        </label>
+
+        <a routerLink="/forgot-password" class="link">
+          Mot de passe oublié ?
+        </a>
+      </div>
+
+      <!-- BUTTON -->
+      <button type="submit" class="login-btn">
+        Se connecter
+      </button>
+
+      <!-- REGISTER -->
+      <p class="text-center">
+        Pas de compte ? 
+        <a routerLink="/register">S'inscrire</a>
+      </p>
+
+    </form>
+
+  </div>
+
+</div>

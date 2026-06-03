@@ -1,0 +1,40 @@
+<div class="navbar">
+
+  <!-- LEFT -->
+  <div class="nav-left">
+    <div class="logo">TreasurySight</div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="nav-center">
+    <select>
+      <option>direction@fastship.ma</option>
+    </select>
+
+    <select>
+      <option>FastShip</option>
+    </select>
+
+    <button class="refresh">&#10227;</button>
+  </div>
+
+  <!-- MENU -->
+  <div class="nav-menu">
+    <a [routerLink]="['/dashboard']" routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }" >Dashboard</a>
+     <a [routerLink]="['/prediction']" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }" >Prédiction</a>
+    <a [routerLink]="['/events']" routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">Échéances</a>
+    <a [routerLink]="['/transaction']" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }" >Transactions</a>
+    
+    <a>Catégories</a>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="nav-right">
+    <span class="icon">&#128100;</span>
+  </div>
+
+</div>

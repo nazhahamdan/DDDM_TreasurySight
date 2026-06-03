@@ -1,0 +1,99 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eef3ff, #f7f9fc);
+}
+
+.register-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #e8ecf0;
+}
+
+.register-card h2 {
+  text-align: center;
+  margin-bottom: 0.3rem;
+  color: #1a1a2e;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* FORM */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  color: #374151;
+}
+
+.form-group input {
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #dbeafe;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #dbeafe;
+}
+
+/* TWO COLUMNS */
+.form-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* BUTTON */
+.register-btn {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.register-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* TEXT */
+.text-center {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  color: #6b7280;
+}
+
+.text-center a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}

@@ -1,0 +1,132 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0d2b66;
+  color: white;
+  padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
+  height: 50px;
+}
+
+/* LEFT */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* CENTER */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-center select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.refresh {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* MENU */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+/* lien normal */
+.nav-menu a {
+  color: #ffffff !important;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.25s ease;
+}
+
+/* visited (important !) */
+.nav-menu a:visited {
+  color: #ffffff !important;
+}
+
+/* hover */
+.nav-menu a:hover {
+  opacity: 1;
+}
+
+/* actif (routerLinkActive) */
+.nav-menu a.active {
+  opacity: 1;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* effet moderne bonus */
+.nav-menu a {
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.nav-menu a.active::after {
+  width: 100%;
+}
+
+/* RIGHT */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.flag {
+  width: 25px;
+  border-radius: 50%;
+}

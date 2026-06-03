@@ -1,0 +1,58 @@
+<div class="page">
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+
+    <div class="nav-left">
+      <div class="logo">TreasurySight</div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Conditions</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button [routerLink]="['/register']" class="btn-primary small">S'inscrire</button>
+      <button [routerLink]="['/login']" class="btn-outline small">Se connecter</button>
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h1>
+        Pilotez votre trésorerie <div class="highlight">en temps réel</div>
+      </h1>
+
+      <p class="subtitle">
+        Prenez des décisions éclairées grâce à une vision claire et instantanée
+        de vos flux financiers.
+      </p>
+
+      <p class="description">
+        TreasurySight centralise toutes vos données financières en un seul endroit.
+        Visualisez vos encaissements et décaissements, identifiez les tendances
+        clés et anticipez votre trésorerie sur les prochains mois grâce à des
+        analyses intelligentes et des prévisions fiables.
+      </p>
+
+      <div class="buttons">
+        <button [routerLink]="['/register']" class="btn-primary">S'inscrire</button>
+        <button [routerLink]="['/login']" class="btn-outline">Se connecter</button>
+      </div>
+
+    </div>
+
+    <!-- IMAGE -->
+    <div class="hero-image">
+      <img src="/images/image d'acceuil.jpg" alt="Dashboard preview">
+    </div>
+
+  </section>
+
+</div>
