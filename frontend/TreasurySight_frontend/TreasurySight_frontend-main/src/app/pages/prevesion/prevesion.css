@@ -1,0 +1,192 @@
+/* ─── Global ─── */
+.prevision-wrapper {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  color: #1a237e;
+  margin: 0;
+}
+
+.page-header p {
+  color: #666;
+  margin-top: 6px;
+}
+
+/* ─── Cards ─── */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* ─── Formulaire ─── */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3f51b5;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-analyser {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-analyser:hover { background: #303f9f; }
+.btn-analyser:disabled { background: #aaa; cursor: not-allowed; }
+
+.btn-reset {
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-reset:hover { background: #f5f5f5; }
+
+/* ─── Jauge ─── */
+.gauge-card {
+  text-align: center;
+}
+
+.gauge-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid currentColor;
+}
+
+.gauge-value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.gauge-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.risque-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+/* ─── Couleurs risque ─── */
+.risk-high  { color: #c62828; border-color: #c62828; }
+.risk-medium{ color: #f57f17; border-color: #f57f17; }
+.risk-low   { color: #2e7d32; border-color: #2e7d32; }
+
+.risk-high  .risque-badge { background: #ffebee; color: #c62828; }
+.risk-medium .risque-badge{ background: #fff8e1; color: #f57f17; }
+.risk-low   .risque-badge { background: #e8f5e9; color: #2e7d32; }
+
+/* ─── Tableau scénarios ─── */
+.scenarios-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scenarios-table th {
+  background: #f5f5f5;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+.scenarios-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.row-optimiste  td:first-child { color: #2e7d32; font-weight: bold; }
+.row-realiste   td:first-child { color: #f57f17; font-weight: bold; }
+.row-pessimiste td:first-child { color: #c62828; font-weight: bold; }
+
+/* ─── Alertes ─── */
+.alert {
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.alert h3 { margin: 0 0 12px 0; font-size: 16px; }
+
+.alert ul { margin: 0; padding-left: 20px; }
+.alert ul li { margin-bottom: 6px; color: #444; }
+
+.alert-danger  { background: #ffebee; border-left: 4px solid #c62828; }
+.alert-warning { background: #fff8e1; border-left: 4px solid #f57f17; }
+.alert-success { background: #e8f5e9; border-left: 4px solid #2e7d32; }

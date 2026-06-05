@@ -1,5 +1,9 @@
 package com.example.demo.Service;
 
+import com.example.demo.Entities.CompteBancaire;
+import com.example.demo.Entities.Entreprise;
+import com.example.demo.Repositories.CompteBancaireRepository;
+import com.example.demo.Repositories.EntrepriseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.example.demo.dto.RawTransaction;
@@ -14,20 +18,27 @@ import com.example.demo.Repositories.EventRepository;
 public class TransactionMapperService {
 
     private final TransactionRepository transactionRepo;
-    private final EventRepository evenementRepo;
+    private final EntrepriseRepository entrepriseRepo;
+    private final CompteBancaireRepository compteBancaireRepo;
 
-    public void saveRawTransaction(RawTransaction raw, Long entrepriseId, Long compteId) {
+    public Transaction saveRawTransaction(RawTransaction raw, Long entrepriseId, Long compteId) {
+        Entreprise entreprise = entrepriseRepo.findById(entrepriseId)
+                .orElseThrow(() -> new RuntimeException("Entreprise introuvable : " + entrepriseId));
+
+        CompteBancaire compte = compteBancaireRepo.findById(compteId)
+                .orElseThrow(() -> new RuntimeException("Compte introuvable : " + compteId));
+
         Transaction t = new Transaction();
         t.setDescription(raw.getDescription());
         t.setMontant(raw.getAmount());
         t.setDateTransaction(raw.getDate());
         t.setSousCategorie(raw.getSubCategory());
         t.setTypeOperation(raw.getTypeOperation());
-        t.setIdEntreprise(entrepriseId);
-        t.setIdCompte(compteId);
-        t.setSourceTransaction(SourceTransaction.API_BANCAIRE);
-        t.setStatutTransaction(StatutTransaction.REALISE);
+        t.setEntreprise(entreprise);   // ← objet, pas un Long
+        t.setCompte(compte);           // ← objet, pas un Long
+        t.setSource(SourceTransaction.API_BANCAIRE);
+        t.setStatut(StatutTransaction.REALISE);
 
-        transactionRepo.save(t);
+        return transactionRepo.save(t);
     }
 }

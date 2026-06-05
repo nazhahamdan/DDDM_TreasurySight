@@ -9,6 +9,7 @@ import { Evenement } from './pages/evenement/evenement';
 import { AddEvenement } from './pages/add-evenement/add-evenement';
 import { Transaction } from './pages/transaction/transaction';
 import { Prediction } from './pages/prediction/prediction';
+import { Prevesion } from './pages/prevesion/prevesion';
 
 export const routes: Routes = [
   {path:'',component:Accueil},
@@ -18,5 +19,6 @@ export const routes: Routes = [
   {path:'events',component:Evenement},
   {path:'addEvenement',component:AddEvenement},
   {path:'transaction',component:Transaction},
-  {path:'prediction',component:Prediction}
+  {path:'prediction',component:Prediction},
+  {path:'prevision',component:Prevesion}
 ];
