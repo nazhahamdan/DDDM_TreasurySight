@@ -12,11 +12,10 @@ public class PredictionService {
     private final RestTemplate restTemplate;
     private final String FLASK_URL = "http://localhost:5000/predict";
 
-    public Map<String, Object> predireFaillite(Map<String, Object> donnees) {
+    public Map<String, Object> predireFaillite() {
         try {
-            return restTemplate.postForObject(
+            return restTemplate.getForObject(
                     FLASK_URL,
-                    donnees,
                     Map.class
             );
         } catch (Exception e) {

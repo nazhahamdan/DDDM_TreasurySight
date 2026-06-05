@@ -1,0 +1,47 @@
+<div class="macro-section">
+
+<div class="macro-header">
+
+  <div class="header-left">
+    <span class="header-dot"></span>
+    <h2>Marchés & Indicateurs</h2>
+    <span class="header-live">LIVE</span>
+  </div>
+
+  <div class="header-right">
+    <span class="derniere-maj">
+      Mis à jour {{ derniereMaj | date:'HH:mm' }}
+    </span>
+    <button class="btn-refresh" (click)="chargerIndicateurs()">
+      ↻
+    </button>
+  </div>
+
+</div>
+
+  <div *ngIf="loading" class="loading">Chargement...</div>
+
+  <div class="cards-grid" *ngIf="!loading">
+    <div class="macro-card" *ngFor="let ind of indicateurs">
+
+      <div class="card-nom">{{ ind.nom }}</div>
+
+      <div class="card-valeur">
+        {{ ind.valeur | number:'1.2-2' }}
+        <span class="card-unite">{{ ind.unite }}</span>
+      </div>
+
+      <div class="card-variation"
+           [ngClass]="isBon(ind) ? 'variation-bon' : 'variation-mauvais'">
+        <span class="fleche">{{ ind.hausse ? '▲' : '▼' }}</span>
+        <span>{{ ind.variation > 0 ? '+' : '' }}{{ ind.variation | number:'1.2-2' }}</span>
+      </div>
+
+      <div class="card-precedent">
+        Préc. {{ ind.precedent | number:'1.2-2' }}
+      </div>
+
+    </div>
+  </div>
+
+</div>

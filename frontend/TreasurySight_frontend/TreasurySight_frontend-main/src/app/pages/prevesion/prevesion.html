@@ -2,42 +2,21 @@
 
 <div class="prevision-wrapper">
 
+  <app-macro-card></app-macro-card>
+
   <div class="page-header">
-    <h1>🔮 Prévision du Risque de Faillite</h1>
-    <p>Analysez le risque financier de votre entreprise sur 30, 60 et 90 jours</p>
+    <h1>Prévision du Risque de Faillite</h1>
+    <p>Analyse automatique basée sur vos données financières</p>
   </div>
 
-  <!-- ─── FORMULAIRE ─── -->
-  <div class="card form-card">
-    <h2>📊 Données Financières</h2>
-    <p class="subtitle">Saisissez les ratios financiers de l'entreprise</p>
-
-    <div class="form-grid">
-      <div class="form-group" *ngFor="let variable of variables">
-        <label>{{ variable.label }}</label>
-        <input
-          type="number"
-          step="0.01"
-          [(ngModel)]="donnees[variable.key]"
-          placeholder="0.00"
-        />
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <button class="btn-reset" (click)="reset()">
-        🔄 Réinitialiser
-      </button>
-      <button class="btn-analyser" (click)="analyser()" [disabled]="loading">
-        {{ loading ? '⏳ Analyse en cours...' : '🔍 Analyser le risque' }}
-      </button>
-    </div>
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-card">
+    <p>⏳ Analyse en cours...</p>
   </div>
 
-  <!-- ─── RÉSULTATS ─── -->
+  <!-- Résultats -->
   <div *ngIf="afficherResultat" class="results-wrapper">
 
-    <!-- Jauge principale -->
     <div class="card gauge-card" [ngClass]="getRisqueClass()">
       <h2>Résultat de l'Analyse</h2>
       <div class="gauge-circle">
@@ -49,7 +28,6 @@
       </div>
     </div>
 
-    <!-- Tableau des scénarios -->
     <div class="card scenarios-card">
       <h2>📈 Évolution sur 90 jours</h2>
       <table class="scenarios-table">
@@ -66,60 +44,29 @@
           <tr class="row-optimiste">
             <td>🟢 Optimiste</td>
             <td>{{ probabilite.toFixed(1) }}%</td>
-            <td>{{ (scenarios.optimiste.j30 * 100).toFixed(1) }}%</td>
-            <td>{{ (scenarios.optimiste.j60 * 100).toFixed(1) }}%</td>
-            <td>{{ (scenarios.optimiste.j90 * 100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.optimiste.j30*100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.optimiste.j60*100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.optimiste.j90*100).toFixed(1) }}%</td>
           </tr>
           <tr class="row-realiste">
             <td>🟡 Réaliste</td>
             <td>{{ probabilite.toFixed(1) }}%</td>
-            <td>{{ (scenarios.realiste.j30 * 100).toFixed(1) }}%</td>
-            <td>{{ (scenarios.realiste.j60 * 100).toFixed(1) }}%</td>
-            <td>{{ (scenarios.realiste.j90 * 100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.realiste.j30*100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.realiste.j60*100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.realiste.j90*100).toFixed(1) }}%</td>
           </tr>
           <tr class="row-pessimiste">
             <td>🔴 Pessimiste</td>
             <td>{{ probabilite.toFixed(1) }}%</td>
-            <td>{{ (scenarios.pessimiste.j30 * 100).toFixed(1) }}%</td>
-            <td>{{ (scenarios.pessimiste.j60 * 100).toFixed(1) }}%</td>
-            <td>{{ (scenarios.pessimiste.j90 * 100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.pessimiste.j30*100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.pessimiste.j60*100).toFixed(1) }}%</td>
+            <td>{{ (scenarios.pessimiste.j90*100).toFixed(1) }}%</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Recommandations -->
-    <div class="card recommandations-card">
-      <h2>💡 Recommandations</h2>
 
-      <div *ngIf="probabilite > 60" class="alert alert-danger">
-        <h3>🔴 RISQUE ÉLEVÉ — Actions urgentes requises</h3>
-        <ul>
-          <li>Négocier un crédit court terme immédiatement</li>
-          <li>Relancer tous les clients en retard de paiement</li>
-          <li>Réduire les dépenses non essentielles de 20%</li>
-          <li>Contacter la banque pour renégocier les dettes</li>
-        </ul>
-      </div>
-
-      <div *ngIf="probabilite > 30 && probabilite <= 60" class="alert alert-warning">
-        <h3>🟡 RISQUE MODÉRÉ — Surveillance recommandée</h3>
-        <ul>
-          <li>Surveiller le cash-flow chaque semaine</li>
-          <li>Accélérer le recouvrement clients</li>
-          <li>Reporter les investissements non urgents</li>
-        </ul>
-      </div>
-
-      <div *ngIf="probabilite <= 30" class="alert alert-success">
-        <h3>🟢 RISQUE FAIBLE — Situation saine</h3>
-        <ul>
-          <li>Placer les excédents de trésorerie</li>
-          <li>Continuer la stratégie actuelle</li>
-          <li>Envisager des investissements de croissance</li>
-        </ul>
-      </div>
-    </div>
 
   </div>
 </div>

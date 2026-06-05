@@ -1,47 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PrevesionService } from '../../services/prevesion-service';
 import { Navbar } from '../../layout/navbar/navbar';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MacroCard } from '../../layout/macro-card/macro-card';
 
 @Component({
   selector: 'app-prevesion',
-  imports: [Navbar,CommonModule, FormsModule],
+  imports: [Navbar,CommonModule, FormsModule,MacroCard],
   templateUrl: './prevesion.html',
   styleUrl: './prevesion.css',
 })
-export class Prevesion {
-  donnees: any = {};
+export class Prevesion implements OnInit {
+
   probabilite: number = 0;
   risque: string = '';
   scenarios: any = null;
-  loading: boolean = false;
+  loading: boolean = true;
   afficherResultat: boolean = false;
 
-  // Labels des variables (adapter selon votre dataset)
-  variables = [
-    { key: 'X1',  label: 'Ratio de liquidité générale' },
-    { key: 'X2',  label: 'Ratio d\'endettement' },
-    { key: 'X3',  label: 'Rentabilité des actifs (ROA)' },
-    { key: 'X4',  label: 'Cash-flow opérationnel' },
-    { key: 'X5',  label: 'Ratio de solvabilité' },
-    { key: 'X6',  label: 'Marge bénéficiaire nette' },
-    { key: 'X7',  label: 'Rotation des actifs' },
-    { key: 'X8',  label: 'Ratio de couverture des intérêts' },
-    { key: 'X9',  label: 'Fonds de roulement / Total actifs' },
-    { key: 'X10', label: 'Bénéfices non distribués / Total actifs' }
-  ];
+  // ✅ Plus de donnees = {} et variables = []
 
-  constructor(private previsionService: PrevesionService) {
-    // Initialiser toutes les valeurs à 0
-    this.variables.forEach(v => this.donnees[v.key] = 0);
-  }
+  constructor(private previsionService: PrevesionService) {}
 
-  analyser() {
-    this.loading = true;
-    this.afficherResultat = false;
-
-    this.previsionService.predireRisque(this.donnees).subscribe({
+  // ✅ Chargement automatique
+  ngOnInit() {
+    this.previsionService.predireRisque().subscribe({
       next: (result) => {
         this.probabilite      = result.probabilite * 100;
         this.risque           = result.risque;
@@ -61,11 +45,4 @@ export class Prevesion {
     if (this.probabilite > 30) return 'risk-medium';
     return 'risk-low';
   }
-
-  reset() {
-    this.variables.forEach(v => this.donnees[v.key] = 0);
-    this.afficherResultat = false;
-    this.probabilite = 0;
-  }
-
 }

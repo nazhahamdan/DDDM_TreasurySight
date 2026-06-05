@@ -4,6 +4,7 @@
   padding: 1.5rem;
   background: #f7f9fc;
   min-height: 100vh;
+  padding-top: 100px;
 }
 
 /* HEADER */
@@ -118,7 +119,7 @@
 }
 
 .expense-card .card-value {
-  color: #F44336; 
+  color: #F44336;
 }
 
 /* CHART */
@@ -261,7 +262,7 @@
 
 /* NEGATIVE (Expenses) */
 .negative {
-  color: #F44336; 
+  color: #F44336;
   font-weight: 600;
 }
 

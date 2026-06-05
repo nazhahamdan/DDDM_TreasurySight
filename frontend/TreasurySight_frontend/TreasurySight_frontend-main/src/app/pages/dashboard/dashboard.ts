@@ -66,10 +66,10 @@ export class Dashboard implements OnInit {
         ...cat,
         expanded: false
       }));
-      
+
       // Select the last past month as default (first forecast comes after it)
       const firstForecastIndex = dto.isForecast.findIndex((f: boolean) => f === true);
-      const lastPastIndex = firstForecastIndex > 0 ? firstForecastIndex - 1 : 0;      
+      const lastPastIndex = firstForecastIndex > 0 ? firstForecastIndex - 1 : 0;
       this.selectMonth(lastPastIndex);
 
       // build chart

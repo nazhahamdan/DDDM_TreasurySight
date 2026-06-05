@@ -5,13 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class PrevesionService {
-
-  private apiUrl = 'http://localhost:8080/api/prediction';
+export class MacroService {
+  private apiUrl = 'http://localhost:8080/api/macro';
 
   constructor(private http: HttpClient) {}
 
-  predireRisque(): Observable<any> {
-  return this.http.get(`${this.apiUrl}/faillite`);
-}
+  getIndicateurs(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/indicateurs`);
+  }
 }

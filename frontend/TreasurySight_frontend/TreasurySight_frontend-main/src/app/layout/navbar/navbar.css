@@ -7,6 +7,12 @@
   padding: 10px 20px;
   font-family: 'Inter', sans-serif;
   height: 50px;
+  position: fixed;    /* ← reste en place */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;      /* ← au dessus du contenu */  /* ← éviter transparence */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08); /* ← légère ombre */
 }
 
 /* LEFT */

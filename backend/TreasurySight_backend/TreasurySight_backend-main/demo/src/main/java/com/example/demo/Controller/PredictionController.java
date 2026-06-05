@@ -13,9 +13,8 @@ public class PredictionController {
 
     private final PredictionService predictionService;
 
-    @PostMapping("/faillite")
-    public Map<String, Object> predireFaillite(
-            @RequestBody Map<String, Object> donnees) {
-        return predictionService.predireFaillite(donnees);
+    @GetMapping("/faillite")
+    public Map<String, Object> predire() {
+        return predictionService.predireFaillite();
     }
 }
