@@ -40,7 +40,7 @@ public class DashboardService {
         // 2. Build timeline (6 past + 3 future months)
         // ==============================
         List<String> months = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yy", Locale.FRENCH);
 
         // Past 6 months
         for (int i = 5; i >= 0; i--) {
@@ -147,7 +147,7 @@ public class DashboardService {
         List<Evenement> events
     ) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM yy", Locale.FRENCH);
 
         // ==============================
         // 1. Structure:
@@ -172,6 +172,8 @@ public class DashboardService {
 
             String month = t.getDateTransaction().format(formatter);
 
+            if (!months.contains(month)) continue;
+
             double value = t.getTypeOperation() == TypeOperation.CREDIT
                     ? t.getMontant()
                     : -t.getMontant();
@@ -182,7 +184,7 @@ public class DashboardService {
             subMap.putIfAbsent(sub, initMonthMap(months));
             Map<String, Double> monthMap = subMap.get(sub);
 
-            monthMap.put(month, monthMap.get(month) + value);
+            monthMap.put(month, monthMap.getOrDefault(month, 0.0) + value);
         }
 
         // ==============================
@@ -198,6 +200,8 @@ public class DashboardService {
 
             String month = e.getDateEcheance().format(formatter);
 
+            if (!months.contains(month)) continue;
+
             double value = e.getTypeOperation() == TypeOperation.CREDIT
                     ? e.getMontant()
                     : -e.getMontant();
@@ -208,7 +212,7 @@ public class DashboardService {
             subMap.putIfAbsent(sub, initMonthMap(months));
             Map<String, Double> monthMap = subMap.get(sub);
 
-            monthMap.put(month, monthMap.get(month) + value);
+            monthMap.put(month, monthMap.getOrDefault(month, 0.0) + value);
         }
 
         // ==============================
@@ -233,7 +237,7 @@ public class DashboardService {
 
                 int i = 0;
                 for (String m : months) {
-                    double val = subEntry.getValue().get(m);
+                    double val = subEntry.getValue().getOrDefault(m, 0.0);;
                     values.add(val);
 
                     // accumulate into category total

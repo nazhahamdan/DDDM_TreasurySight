@@ -24,7 +24,7 @@ export class Transaction {
   }
 
   loadTransactions() {
-    this.transactionService.getByEntreprise(3).subscribe(data => {
+    this.transactionService.getByEntreprise(1).subscribe(data => {
       this.transactions = data;
       console.log(data);
     });
