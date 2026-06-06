@@ -23,6 +23,7 @@ public class Transaction {
     private TypeOperation typeOperation;
 
     private LocalDate dateTransaction;
+    private LocalDate datePaiement;
 
     @Enumerated(EnumType.STRING)
     private SousCategorie sousCategorie;
@@ -38,6 +39,8 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     private StatutTransaction statut;
+
+    private String client;
 
     @ManyToOne
     @JoinColumn(name = "id_compte", nullable = true)

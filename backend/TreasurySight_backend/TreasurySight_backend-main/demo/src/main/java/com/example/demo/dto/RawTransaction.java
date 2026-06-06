@@ -10,8 +10,10 @@ import com.example.demo.enums.TypeOperation;
 public class RawTransaction {
     private String description;
     private LocalDate date;
+    private LocalDate datePaiement;
     private Double amount;
     private Categorie category;        
     private SousCategorie subCategory; 
     private TypeOperation typeOperation;
+    private String client;
 }

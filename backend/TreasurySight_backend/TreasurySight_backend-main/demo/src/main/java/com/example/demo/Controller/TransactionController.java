@@ -3,6 +3,8 @@ package com.example.demo.Controller;
 
 import com.example.demo.Entities.Transaction;
 import com.example.demo.Service.TransactionService;
+import com.example.demo.dto.RawTransaction;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,16 +34,19 @@ public class TransactionController {
     //  CREATE
     @PostMapping("/entreprise/{idEntreprise}")
     public Transaction create(
-            @RequestBody Transaction t,
+            @RequestBody RawTransaction dto,
             @PathVariable int idEntreprise
     ) {
-        return service.create(t, idEntreprise);
+        return service.create(dto, idEntreprise);
     }
 
     //  UPDATE
     @PutMapping("/{id}")
-    public Transaction update(@PathVariable Long id, @RequestBody Transaction t) {
-        return service.update(id, t);
+    public Transaction update(
+            @PathVariable Long id,
+            @RequestBody RawTransaction dto
+    ) {
+        return service.update(id, dto);
     }
 
     //  DELETE
