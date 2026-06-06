@@ -17,8 +17,8 @@ export class Register {
     nom:new FormControl('',),
     prenom:new FormControl(''),
     email:new FormControl('',[Validators.email,Validators.required]),
-    nom_entreprise:new FormControl(''),
-    secteur_entreprise:new FormControl(''),
+    nomEntreprise:new FormControl(''),
+    secteurEntreprise:new FormControl(''),
     password:new FormControl('',[Validators.minLength(8),Validators.required,Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$')]),
   })
 

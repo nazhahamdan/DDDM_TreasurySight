@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: treasurysight-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: nazha
+      MYSQL_DATABASE: treasurySight_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./TreasurySight_backend-main/demo
+    container_name: treasurysight-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/treasurySight_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: nazha
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  frontend:
+    build: ./TreasurySight_frontend-main
+    container_name: treasurysight-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  flask-api:
+    build: ./flask-api
+    container_name: treasurysight-flask
+    ports:
+      - "5000:5000"
+    depends_on:
+    mysql:
+      condition: service_healthy
+
+volumes:
+  mysql_data:
