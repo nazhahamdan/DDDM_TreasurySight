@@ -4,11 +4,39 @@
     <app-navbar></app-navbar>
 
     <div class="page-header">
-        <h1>Analyse Clients & Retards de Paiement</h1>
-        <p>
-        Identifiez les clients à risque et leur impact sur la trésorerie.
-        </p>
+        <div>
+            <h1>Analyse Clients & Retards de Paiement</h1>
+            <p>Identifiez les clients à risque et leur impact sur votre trésorerie.</p>
+        </div>
+       
+        <div class="selector">
+            <button
+                (click)="currentView = 'general analytics'"
+                [class.active]="currentView === 'general analytics'">
+
+                <i class="ri-bar-chart-2-line"></i>
+                General Analytics
+            </button>
+
+            <button
+                (click)="currentView = 'CA vs Retard'"
+                [class.active]="currentView === 'CA vs Retard'">
+
+                <i class="ri-layout-line"></i>
+                CA vs Retard
+            </button>
+
+            <button
+                (click)="currentView = 'table'"
+                [class.active]="currentView === 'table'">
+
+                <i class="ri-table-line"></i>
+                Table
+            </button>
+        </div>
     </div>
+
+<div *ngIf="currentView === 'general analytics'">
 
     <!-- KPI CARDS -->
 
@@ -48,18 +76,17 @@
 
     <div class="charts-grid">
 
-        <!-- SCATTER -->
         <div class="chart-card">
-            <h3>CA vs Retard</h3>
+
+            <h3>Pareto du Cash</h3>
 
             <div class="chart-wrapper"
                 echarts
-                [options]="scatterChartOption">
+                [options]="paretoChartOption">
             </div>
 
         </div>
 
-        <!-- DISTRIBUTION -->
         <div class="chart-card">
             <h3>Distribution des Retards</h3>
 
@@ -73,23 +100,83 @@
 
     </div>
 
-    <!-- PARETO -->
-    <div class="chart-card full-width">
-        <h3>Pareto du Cash</h3>
+</div>
 
-        <div class="chart-wrapper"
-            echarts
-            [options]="paretoChartOption">
-        </div>
-    
+<div *ngIf="currentView === 'CA vs Retard'">
+
+  <div class="chart-card">
+
+    <!-- <h3>CA vs Retard</h3> -->
+
+    <div class="chart-wrapper"
+         echarts
+         [options]="scatterChartOption">
     </div>
+
+    <!-- INSIGHT PANEL -->
+    <div class="insight-panel">
+
+      <div class="insight-header">
+        <div>
+          <h4>Insight analytique</h4>
+          <p>Lecture business du comportement de paiement clients</p>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+
+        <div class="insight-card good">
+            <h5>🟢 Zone optimale (droite basse)</h5>
+            <p>
+            Clients à forte valeur et faible retard.<br>
+            Ce sont les clients les plus rentables et les plus fiables pour votre trésorerie.
+            </p>
+        </div>
+
+        <div class="insight-card warning">
+            <h5>🟠 Zone sensible (droite haute)</h5>
+            <p>
+            Clients à fort CA mais avec retards récurrents.<br>
+            Ils génèrent du chiffre d’affaires mais dégradent le cash-flow.
+            </p>
+        </div>
+
+        <div class="insight-card risk">
+            <h5>🔴 Zone critique (gauche haute)</h5>
+            <p>
+            Clients à faible CA avec retards fréquents.<br>
+            Impact limité sur le revenu mais risque élevé de gestion et de recouvrement.
+            </p>
+        </div>
+
+    </div>
+
+      <div class="insight-recommendations">
+
+        <h4>Recommandations</h4>
+
+        <ul>
+          <li>Prioriser les relances sur les clients à fort CA et retard élevé</li>
+          <li>Réduire les délais de paiement contractuels pour les profils à risque</li>
+          <li>Mettre en place des limites de crédit dynamiques par client</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="currentView === 'table'">
 
     <!-- TABLE -->
 
     <div class="table-card">
 
         <div class="table-header">
-        <h3>Clients</h3>
+        <h3>Vos Clients</h3>
         </div>
 
         <table>
@@ -159,5 +246,7 @@
         </table>
 
     </div>
+
+</div>
 
 </div>

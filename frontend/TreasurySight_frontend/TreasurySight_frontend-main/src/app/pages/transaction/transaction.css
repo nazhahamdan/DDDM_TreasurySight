@@ -101,7 +101,7 @@
 
 /* ADD BUTTON */
 .btn-add {
-  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;

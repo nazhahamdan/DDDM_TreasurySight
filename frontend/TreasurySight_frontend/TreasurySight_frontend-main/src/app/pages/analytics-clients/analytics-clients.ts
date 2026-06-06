@@ -16,6 +16,7 @@ import { Navbar } from '../../layout/navbar/navbar';
 export class AnalyticsClients implements OnInit {
 
   clients: ClientRisk[] = [];
+  currentView: 'general analytics' | 'CA vs Retard' | 'table' = 'general analytics';
 
   totalCa = 0;
   totalOverdue = 0;
