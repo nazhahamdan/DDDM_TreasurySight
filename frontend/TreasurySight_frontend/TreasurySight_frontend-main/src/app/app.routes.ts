@@ -11,6 +11,7 @@ import { Transaction } from './pages/transaction/transaction';
 import { Prediction } from './pages/prediction/prediction';
 import { Prevesion } from './pages/prevesion/prevesion';
 import { Recommandation } from './pages/recommandation/recommandation';
+import { AnalyticsClients } from './pages/analytics-clients/analytics-clients';
 
 export const routes: Routes = [
   {path:'',component:Accueil},
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path:'transaction',component:Transaction},
   {path:'prediction',component:Prediction},
   {path:'prevision',component:Prevesion},
-  {path:'recommandation',component:Recommandation}
+  {path:'recommandation',component:Recommandation},
+  {path: 'analytics-clients',component: AnalyticsClients}
 ];

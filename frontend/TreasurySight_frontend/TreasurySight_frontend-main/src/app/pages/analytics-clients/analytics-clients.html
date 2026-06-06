@@ -1,0 +1,163 @@
+
+<div class="analytics-container">
+  
+    <app-navbar></app-navbar>
+
+    <div class="page-header">
+        <h1>Analyse Clients & Retards de Paiement</h1>
+        <p>
+        Identifiez les clients à risque et leur impact sur la trésorerie.
+        </p>
+    </div>
+
+    <!-- KPI CARDS -->
+
+    <div class="kpi-grid">
+
+        <div class="kpi-card">
+        <div class="kpi-title">CA Clients</div>
+        <div class="kpi-value">
+            {{ totalCa | number:'1.0-0' }} DH
+        </div>
+        </div>
+
+        <div class="kpi-card">
+        <div class="kpi-title">Retard Moyen</div>
+        <div class="kpi-value">
+            {{ avgDelay | number:'1.0-1' }} j
+        </div>
+        </div>
+
+        <div class="kpi-card">
+        <div class="kpi-title">Montant en Retard</div>
+        <div class="kpi-value">
+            {{ totalOverdue | number:'1.0-0' }} DH
+        </div>
+        </div>
+
+        <div class="kpi-card">
+        <div class="kpi-title">Clients à Risque</div>
+        <div class="kpi-value">
+            {{ riskyClients }}
+        </div>
+        </div>
+
+    </div>
+
+    <!-- GRAPHS -->
+
+    <div class="charts-grid">
+
+        <!-- SCATTER -->
+        <div class="chart-card">
+            <h3>CA vs Retard</h3>
+
+            <div class="chart-wrapper"
+                echarts
+                [options]="scatterChartOption">
+            </div>
+
+        </div>
+
+        <!-- DISTRIBUTION -->
+        <div class="chart-card">
+            <h3>Distribution des Retards</h3>
+
+            <div class="chart-wrapper"
+                echarts
+                [options]="distributionChartOption">
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- PARETO -->
+    <div class="chart-card full-width">
+        <h3>Pareto du Cash</h3>
+
+        <div class="chart-wrapper"
+            echarts
+            [options]="paretoChartOption">
+        </div>
+    
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+        <h3>Clients</h3>
+        </div>
+
+        <table>
+
+        <thead>
+
+            <tr>
+            <th>Client</th>
+            <th>CA</th>
+            <th>Retard Moyen</th>
+            <th>Montant en Retard</th>
+            <th>Factures</th>
+            <th>Factures en Retard</th>
+            <th>Score</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let client of clients">
+
+            <td class="client-name">
+                {{ client.client }}
+            </td>
+
+            <td>
+                {{ client.totalCa | number:'1.0-0' }}
+            </td>
+
+            <td>
+                {{ client.averageDelay | number:'1.0-1' }} j
+            </td>
+
+            <td>
+                {{ client.overdueAmount | number:'1.0-0' }}
+            </td>
+
+            <td>
+                {{ client.invoiceCount }}
+            </td>
+
+            <td>
+                {{ client.lateInvoiceCount }}
+            </td>
+
+            <td>
+
+                <span
+                class="score-badge"
+                [ngClass]="{
+                    'risk-high': client.score >= 70,
+                    'risk-medium': client.score >= 40 && client.score < 70,
+                    'risk-low': client.score < 40
+                }">
+
+                {{ client.score }}
+
+                </span>
+
+            </td>
+
+            </tr>
+
+        </tbody>
+
+        </table>
+
+    </div>
+
+</div>
