@@ -121,11 +121,10 @@ Injection manuelle des données (init.sql)
 Visualisation des dashboards analytiques
 ```
 
-## Lien Pitch Deck & App Demo
+## Presentation & App Demo Link
 
 ```
-https://canva.link/d0gamyqre0dnt62
-
+[Pitch Deck TreasurySight](https://canva.link/d0gamyqre0dnt62)
 ```
 
 ---
