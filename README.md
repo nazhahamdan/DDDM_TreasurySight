@@ -123,9 +123,7 @@ Visualisation des dashboards analytiques
 
 ## Presentation & App Demo Link
 
-```
 [Pitch Deck TreasurySight](https://canva.link/d0gamyqre0dnt62)
-```
 
 ---
 
