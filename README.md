@@ -121,18 +121,25 @@ Injection manuelle des données (init.sql)
 Visualisation des dashboards analytiques
 ```
 
+## Lien Pitch Deck & App Demo
+
+```
+https://canva.link/d0gamyqre0dnt62
+
+```
+
 ---
 
 
 ## Limitation fonctionnelle (version initiale)
 
-Dans cette première version de l’application, et en raison des contraintes de temps de développement, le système est conçu pour fonctionner **uniquement avec la première entreprise enregistrée** dans la base de données.
+Dans cette première version de l’application, et en raison des contraintes de temps, le système est conçu pour fonctionner **uniquement avec la première entreprise enregistrée** dans la base de données.
 
 Concrètement :
 
-* Les **tableaux de bord (dashboards)**
-* Les **analyses clients et comportements de paiement**
+* Les **tableaux de bord**
 * Les **indicateurs financiers globaux**
+* Les **analyses clients et comportements de paiement**
 
 sont tous affichés et calculés **uniquement à partir de la première entreprise créée**.
 
