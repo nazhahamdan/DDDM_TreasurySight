@@ -1,1 +1,4 @@
 "flask-api/state.db" 
+
+flask-api/venv/
+venv/

@@ -1,13 +1,12 @@
-# Étape 1 : Build
-FROM node:20-alpine AS build
+FROM node:20-alpine
+
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm install
-COPY . .
-RUN npm run build
 
-# Étape 2 : Servir avec Nginx
-FROM nginx:alpine
-COPY --from=build /app/dist/TreasurySight/browser /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY . .
+
+EXPOSE 4200
+
+CMD ["npx", "ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
