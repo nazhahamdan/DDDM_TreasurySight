@@ -126,20 +126,3 @@ Visualisation des dashboards analytiques
 [Pitch Deck TreasurySight](https://canva.link/d0gamyqre0dnt62)
 
 ---
-
-
-## Limitation fonctionnelle (version initiale)
-
-Dans cette première version de l’application, et en raison des contraintes de temps, le système est conçu pour fonctionner **uniquement avec la première entreprise enregistrée** dans la base de données.
-
-Concrètement :
-
-* Les **tableaux de bord**
-* Les **indicateurs financiers globaux**
-* Les **analyses clients et comportements de paiement**
-
-sont tous affichés et calculés **uniquement à partir de la première entreprise créée**.
-
-Les autres entreprises peuvent être créées et sont bien persistées en base de données, mais **elles ne sont pas encore prises en charge par le frontend**, qui ne gère pas la sélection ou le changement dynamique d’entreprise.
-
----
